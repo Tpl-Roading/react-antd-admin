@@ -8,6 +8,7 @@ specifiers:
   commitizen: ^4.2.4
   commitlint-config-cz: ^0.13.3
   cz-customizable: ^6.3.0
+  husky: ^8.0.0
   react: ^17.0.2
   react-dom: ^17.0.2
   typescript: ^4.6.3
@@ -25,6 +26,7 @@ devDependencies:
   commitizen: 4.2.4
   commitlint-config-cz: 0.13.3
   cz-customizable: 6.3.0
+  husky: 8.0.1
   typescript: 4.6.4
   vite: 2.9.9
 
@@ -1473,6 +1475,12 @@ packages:
   /human-signals/2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
+    dev: true
+
+  /husky/8.0.1:
+    resolution: {integrity: sha512-xs7/chUH/CKdOCs7Zy0Aev9e/dKOMZf3K1Az1nar3tzlv0jfqnYtu235bstsWTmXOR0EfINrPa97yy4Lz6RiKw==}
+    engines: {node: '>=14'}
+    hasBin: true
     dev: true
 
   /iconv-lite/0.4.24:

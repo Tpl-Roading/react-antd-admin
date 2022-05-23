@@ -22,7 +22,8 @@
     "commitlint-config-cz": "^0.13.3",
     "cz-customizable": "^6.3.0",
     "typescript": "^4.6.3",
-    "vite": "^2.9.9"
+    "vite": "^2.9.9",
+    "husky": "^8.0.0"
   },
   "config": {
     "commitizen": {
