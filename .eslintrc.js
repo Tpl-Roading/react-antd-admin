@@ -22,5 +22,11 @@ module.exports = {
   plugins: ["react", "@typescript-eslint"],
   rules: {
     "prettier/prettier": "error",
+    "@typescript-eslint/no-explicit-any": "off"
   },
+  settings: {
+    react: {
+      version: "detect"
+    }
+  }
 }
