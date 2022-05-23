@@ -13,6 +13,7 @@ dist-ssr
 *.local
 /.pnp
 .pnp.js
+.eslintcache
 
 # Editor directories and files
 .vscode/*
