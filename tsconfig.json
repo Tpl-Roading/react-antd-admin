@@ -22,12 +22,13 @@
     ],
   },
   "include": [
-    "src",
-    "types"
+    "src/**/*",
+    "types/**/*",
+    "vite.config.ts",
+    "package.json"
   ],
   "exclude": [
     "node_modules",
     "dist"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
 }
