@@ -8,9 +8,9 @@
     "preview": "vite preview",
     "commit": "git-cz",
     "prepare": "husky install",
-		"lint": "tsc --noEmit &&  eslint src --ext .ts,.tsx ",
-		"lint:fix": "tsc --noEmit && eslint --fix --ext src --ext .ts,.tsx",
-		"format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.less\""
+    "lint": "tsc --noEmit &&  eslint src --ext .ts,.tsx ",
+    "lint:fix": "tsc --noEmit && eslint --fix --ext src --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.less\""
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -31,6 +31,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
     "husky": "^8.0.0",
     "lint-staged": "^12.4.1",
     "postcss": "^8.4.14",
