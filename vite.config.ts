@@ -1,5 +1,6 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
+import { resolve } from "path"
 import dayjs from "dayjs"
 
 import { getDayTimeFormat } from "./src/utils/dayjs"
@@ -25,6 +26,12 @@ export default defineConfig(({ mode }) => {
       cssCodeSplit: true,
       target: "es2015",
       sourcemap: mode === "dev" || mode === "development",
+    },
+    resolve: {
+      alias: {
+        "@/": resolve(__dirname, "./src"),
+        "#/": resolve(__dirname, "./types"),
+      },
     },
     server: {
       port: 6523,

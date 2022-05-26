@@ -16,10 +16,19 @@
     "noEmit": true,
     "noImplicitAny": false,
     "jsx": "react-jsx",
+    "baseUrl": ".",
     "typeRoots": [
       "./node_modules/@types/",
       "./types"
     ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "#/*": [
+        "./types/*"
+      ],
+    }
   },
   "include": [
     "src/**/*",
