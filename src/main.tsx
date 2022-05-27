@@ -1,5 +1,8 @@
 import ReactDOM from "react-dom"
-import App from "./App"
-import "./index.css"
+import "modern-css-reset"
+
+import App from "./pages/demo"
+
+import "@/assets/less/index.less"
 
 ReactDOM.render(<App />, document.getElementById("root"))
