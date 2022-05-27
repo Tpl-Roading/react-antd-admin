@@ -1,10 +1,13 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
-import { createStyleImportPlugin, AntdResolve } from "vite-plugin-style-import"
 
+import { createStyleImportPlugin, AntdResolve } from "vite-plugin-style-import"
 import lessToJS from "less-vars-to-js"
+
 import dayjs from "dayjs"
 import antdDayjs from "antd-dayjs-vite-plugin"
+
+import svgr from "@honkhonk/vite-plugin-svgr"
 
 import { resolve } from "path"
 import fs from "fs"
@@ -29,6 +32,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       react(),
+
+      svgr(),
 
       // antd 按需引入
       createStyleImportPlugin({

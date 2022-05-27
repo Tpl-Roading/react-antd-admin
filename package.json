@@ -14,7 +14,9 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.less\""
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "antd": "^4.20.6",
+    "classnames": "^2.3.1",
     "dayjs": "^1.11.2",
     "modern-css-reset": "^1.4.0",
     "react": "^17.0.2",
@@ -22,6 +24,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
+    "@honkhonk/vite-plugin-svgr": "^1.1.0",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
