@@ -1,7 +1,13 @@
 import { defineConfig } from "vite"
 import react from "@vitejs/plugin-react"
-import { resolve } from "path"
+import { createStyleImportPlugin, AntdResolve } from "vite-plugin-style-import"
+
+import lessToJS from "less-vars-to-js"
 import dayjs from "dayjs"
+import antdDayjs from "antd-dayjs-vite-plugin"
+
+import { resolve } from "path"
+import fs from "fs"
 
 import { getDayTimeFormat } from "./src/utils/dayjs"
 import pkg from "./package.json"
@@ -14,10 +20,33 @@ const __APP_INFO__ = {
   lastBuildTime: dayjs().format(getDayTimeFormat()),
 }
 
+const customTheme = lessToJS(
+  fs.readFileSync(resolve(__dirname, "./src/assets/less/theme.less"), "utf8"),
+)
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
-    plugins: [react()],
+    plugins: [
+      react(),
+
+      // antd 按需引入
+      createStyleImportPlugin({
+        resolves: [AntdResolve()],
+      }),
+
+      // 替换antd中的dayjs
+      antdDayjs(),
+    ],
+    // 引入antd自定义主题配置
+    css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+          modifyVars: customTheme,
+        },
+      },
+    },
     define: {
       __APP_INFO__,
     },

@@ -1,7 +1,10 @@
 // import React from 'react'
 import { useState } from "react"
-import logo from "@/assets/icons/logo.svg"
+import { Button, Row, Col, DatePicker, Statistic } from "antd"
+import dayjs from "dayjs"
+
 import "./index.css"
+import logo from "@/assets/icons/logo.svg"
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,14 +14,26 @@ function App() {
       <header className="app-header">
         <img src={logo} className="app-logo" alt="logo" />
         <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
+        <Row gutter={20} className="app-row">
+          <Col offset={2} span={10}>
+            <Statistic title="Latest count is " value={count} />
+            <Button
+              type="primary"
+              onClick={() => setCount((count) => count + 1)}
+              style={{ marginRight: "20px" }}
+            >
+              {" "}
+              +1{" "}
+            </Button>
+            <Button type="primary" onClick={() => setCount((count) => count - 1)} danger>
+              {" "}
+              -1{" "}
+            </Button>
+          </Col>
+          <Col span={10}>
+            <DatePicker defaultValue={dayjs()} />
+          </Col>
+        </Row>
         <p>
           <a
             className="app-link"
