@@ -1,9 +1,21 @@
 .ly-main {
+  height: 100%;
+
+  &-sider {
+    width: 210px;
+  }
+
   &-head {
-    padding: 20px 60px;
+    height: 48px;
+    padding: 0;
+    background: #001529;
+    transition: all 0.2s;
   }
 
   &-body {
+    height: calc(100% - 48px);
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 100px;
   }
 }

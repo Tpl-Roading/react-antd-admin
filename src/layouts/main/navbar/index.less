@@ -1,0 +1,25 @@
+.ly-main-navbar {
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: #fff !important;
+  border-bottom: 1px solid #eee;
+  border-left: 1px solid #eee;
+
+  &-left,
+  &-right {
+    line-height: 48px;
+  }
+
+  &-collapse {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  &-collapsed {
+    transform: rotate(180deg);
+    transition: transform 0.25s;
+  }
+}
