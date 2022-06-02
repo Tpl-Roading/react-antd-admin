@@ -10,6 +10,7 @@ const lazyRoutes: RouteObjectExtend[] = [
   {
     path: "/",
     title: "首页",
+    key: "/",
     element: (
       <LoginGuard>
         <MainLayout />
@@ -19,6 +20,7 @@ const lazyRoutes: RouteObjectExtend[] = [
       {
         path: "",
         title: "首页",
+        key: "/",
         element: <Navigate to="/dashboard" />,
       },
       ...mainMenuRoutes,

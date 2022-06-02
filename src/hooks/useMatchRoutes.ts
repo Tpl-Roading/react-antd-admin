@@ -1,6 +1,12 @@
 import { matchRoutes } from "react-router-dom"
-import routes from "@/router/routes"
+import allRoutes, { RouteObjectExtend } from "@/router/routes"
 
-export default function useMatchRoutes(path = window.location.pathname) {
+export default function useMatchRoutes({
+  routes = allRoutes,
+  path = window.location.pathname,
+}: {
+  routes?: RouteObjectExtend[]
+  path?: string
+}) {
   return matchRoutes(routes, path)
 }

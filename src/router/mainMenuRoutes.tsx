@@ -11,20 +11,15 @@ const Detail = lazy(() => import("@/pages/detail"))
 
 const menuRoutes: RouteObjectExtend[] = [
   {
-    path: "dashboard",
+    path: "/dashboard",
     title: "Dashboard",
     key: "/dashboard",
     icon: <DashboardOutlined />,
-    element: (
-      <LazyComponent>
-        <Dashboard />
-      </LazyComponent>
-    ),
     children: [
       {
         path: "",
         title: "仪表盘",
-        key: "/dashboard-index",
+        key: "/dashboard",
         element: <Navigate to="/dashboard/analysis" />,
       },
       {
@@ -50,7 +45,7 @@ const menuRoutes: RouteObjectExtend[] = [
     ],
   },
   {
-    path: "table",
+    path: "/table",
     title: "表格页",
     key: "/table",
     icon: <TableOutlined />,
@@ -58,7 +53,7 @@ const menuRoutes: RouteObjectExtend[] = [
       {
         path: "",
         title: "简单表格",
-        key: "/table-index",
+        key: "/table",
         element: <Navigate to="/table/simple" />,
       },
       {
@@ -75,6 +70,7 @@ const menuRoutes: RouteObjectExtend[] = [
         path: ":id",
         title: "表格详情",
         key: "/table/:id",
+        activeMenu: "/table/simple",
         hideMenu: true,
         element: (
           <LazyComponent>
