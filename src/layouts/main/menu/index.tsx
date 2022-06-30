@@ -1,12 +1,12 @@
 import { FC, useState, useCallback, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { Menu } from "antd"
 
 import { ItemType } from "antd/lib/menu/hooks/useItems"
 import mainMenus from "@/router/mainMenuRoutes"
 import { RouteObjectExtend } from "@/router/routes"
 
-import { filter, treeMap, findNode } from "@/utils/tree"
+import { filter, treeMap } from "@/utils/tree"
 
 const menuRoutes = filter(mainMenus, (item) => item.hideMenu !== true && !!item.path)
 const menus = treeMap(menuRoutes, {
@@ -24,6 +24,7 @@ const Index: FC<{ collapsed: boolean }> = ({ collapsed }) => {
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
   const [openKeys, setOpenKeys] = useState<string[] | undefined>([])
   const navigator = useNavigate()
+  const { pathname } = useLocation()
 
   const onOpenChange = useCallback(
     (openKeys: string[]) => {
@@ -37,29 +38,33 @@ const Index: FC<{ collapsed: boolean }> = ({ collapsed }) => {
   const onSelect = useCallback(
     ({ selectedKeys, item }: { selectedKeys: string[]; item?: any }) => {
       const latestMenuKey = selectedKeys[selectedKeys.length - 1]
-      const activeMenu = findNode(menuRoutes, (item: any) => item.key === latestMenuKey)
 
       // 如果是选择的菜单项时，antd会传入item选项
       if (item) {
         navigator(latestMenuKey)
       }
 
-      console.log("🚀 ~ file: index.tsx ~ line 40 ~ onSelect ~ activeMenu", activeMenu)
       setSelectedKeys(selectedKeys)
     },
     [navigator],
   )
 
-  const onMenuInit = useCallback((activeMenus: RouteObjectExtend[]) => {
-    if (activeMenus.length) {
-      const activeMenu = activeMenus[activeMenus.length - 1]
-      onSelect({ selectedKeys: [activeMenu?.activeMenu || activeMenu?.key] })
-      setOpenKeys(activeMenus.slice(0, activeMenus.length - 1).map((item) => item.key))
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const onMenuInit = useCallback(
+    (activeMenus: RouteObjectExtend[]) => {
+      if (activeMenus.length) {
+        const activeMenu = activeMenus[activeMenus.length - 1]
+        onSelect({ selectedKeys: [activeMenu?.activeMenu || activeMenu?.key] })
+        if (!collapsed)
+          setOpenKeys(activeMenus.slice(0, activeMenus.length - 1).map((item) => item.key))
+      }
+    },
+    [collapsed, onSelect],
+  )
 
   useEffect(() => {
+    // 如果是直接通过点击菜单切换，则不进行后续操作
+    if (selectedKeys.includes(pathname)) return
+
     const activeMenus = findActiveMainMenu()
     let timer
 
@@ -79,7 +84,7 @@ const Index: FC<{ collapsed: boolean }> = ({ collapsed }) => {
       clearTimeout(timer)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [pathname])
 
   useEffect(() => {
     if (collapsed) {
