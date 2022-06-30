@@ -47,12 +47,15 @@ declare function parseInt(s: string | number, radix?: number): number
 
 declare function parseFloat(string: string | number): number
 
-declare global {
-  const __APP_INFO__: {
-    pkg: {
-      name: string
-      version: string
-    }
-    lastBuildTime: string
+type APP_INFO = {
+  pkg: {
+    name: string
+    version: string
   }
+  lastBuildTime: string
+}
+
+declare const __APP_INFO__: APP_INFO
+declare interface Window {
+  __APP_INFO__: APP_INFO
 }
