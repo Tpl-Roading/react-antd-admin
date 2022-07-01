@@ -33,7 +33,7 @@ const Index: FC = () => {
   return (
     <Breadcrumb>
       {routes.map((item) => (
-        <Breadcrumb.Item key={item.path} overlay={<OverlayMenu routes={item.children} />}>
+        <Breadcrumb.Item key={item.path} overlay={genOverlayMenu(item.children) as any}>
           {item.title}
         </Breadcrumb.Item>
       ))}
@@ -46,6 +46,20 @@ export default Index
 
 const OverlayMenu: FC<{ routes?: RouteObjectExtend[] }> = ({ routes = [] }) => {
   if (!routes.length) return null
+
+  return (
+    <Menu
+      items={routes.map((item) => ({
+        key: item.key,
+        label: <Link to={item.key}>{item.title}</Link>,
+      }))}
+    />
+  )
+}
+
+// 在本次搭建过程中，只能通过该方式生成Menu时，才能在点击item之后自动隐藏
+function genOverlayMenu(routes?: RouteObjectExtend[]) {
+  if (!routes || !routes.length) return null
 
   return (
     <Menu
