@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react"
 import { Link, matchRoutes, RouteMatch, useLocation } from "react-router-dom"
 
 import { Breadcrumb, Menu } from "antd"
-import mainRoutes from "@/router/mainMenuRoutes"
+import mainRoutes from "@/router/mainRoutes"
 import { RouteObjectExtend } from "@/router/routes"
 import { filter } from "@/utils/tree"
 

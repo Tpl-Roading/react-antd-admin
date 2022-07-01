@@ -3,13 +3,12 @@ import { useNavigate, useLocation } from "react-router-dom"
 import { Menu } from "antd"
 
 import { ItemType } from "antd/lib/menu/hooks/useItems"
-import mainMenus from "@/router/mainMenuRoutes"
+import { MainMenus } from "@/router/menuRoutes"
 import { RouteObjectExtend } from "@/router/routes"
 
-import { filter, treeMap } from "@/utils/tree"
+import { treeMap } from "@/utils/tree"
 
-const menuRoutes = filter(mainMenus, (item) => item.hideMenu !== true && !!item.path)
-const menus = treeMap(menuRoutes, {
+const menus = treeMap(MainMenus, {
   conversion: (item: any) => ({ label: item.title, key: item.key, icon: item.icon }),
 }) as ItemType[]
 
@@ -17,7 +16,7 @@ import "./index.less"
 import { findActiveMenu } from "../utils"
 
 function findActiveMainMenu() {
-  return findActiveMenu(menuRoutes)
+  return findActiveMenu(MainMenus)
 }
 
 const Index: FC<{ collapsed: boolean }> = ({ collapsed }) => {

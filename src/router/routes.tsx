@@ -2,7 +2,6 @@ import { ReactNode } from "react"
 import { RouteObject } from "react-router-dom"
 
 import Login from "@/pages/login"
-import Demo from "@/pages/demo"
 import NotFound from "@/pages/404"
 
 import lazyRoutes from "./lazyRoutes"
@@ -25,12 +24,6 @@ const routes: RouteObjectExtend[] = [
     title: "登录",
     key: "/login",
     element: <Login />,
-  },
-  {
-    path: "/demo",
-    title: "Demo",
-    key: "/demo",
-    element: <Demo />,
   },
   ...lazyRoutes,
   {

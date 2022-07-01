@@ -1,12 +1,14 @@
 import { Navigate } from "react-router-dom"
 
 import { RouteObjectExtend } from "./routes"
-import mainMenuRoutes from "./mainMenuRoutes"
+import mainMenuRoutes from "./mainRoutes"
+import demoRoutes from "./demoRoutes"
 
 import LoginGuard from "./guards/login"
 import MainLayout from "@/layouts/main"
 
 const lazyRoutes: RouteObjectExtend[] = [
+  ...demoRoutes,
   {
     path: "/",
     title: "首页",
