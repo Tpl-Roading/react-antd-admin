@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
 
 import { RouteObjectExtend } from "./routes"
 import mainMenuRoutes from "./mainRoutes"
@@ -8,24 +8,32 @@ import LoginGuard from "./guards/login"
 import MainLayout from "@/layouts/main"
 
 const lazyRoutes: RouteObjectExtend[] = [
-  ...demoRoutes,
   {
     path: "/",
     title: "首页",
     key: "/",
     element: (
       <LoginGuard>
-        <MainLayout />
+        <Outlet />
       </LoginGuard>
     ),
     children: [
+      ...demoRoutes,
       {
-        path: "",
+        path: "/",
         title: "首页",
         key: "/",
-        element: <Navigate to="/dashboard" />,
+        element: <MainLayout />,
+        children: [
+          {
+            path: "",
+            title: "首页",
+            key: "/",
+            element: <Navigate to="/dashboard" />,
+          },
+          ...mainMenuRoutes,
+        ],
       },
-      ...mainMenuRoutes,
     ],
   },
 ]
